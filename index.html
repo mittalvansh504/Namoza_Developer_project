@@ -79,16 +79,17 @@ input{
 
 button{
     padding:15px;
-    background:#0077ff;
-    color:white;
+    background:#0056d6;
+    color:ffffff;
     border:none;
     border-radius:8px;
     font-size:18px;
     cursor:pointer;
+    transition:background-color .2s ease;
 }
 
 button:hover{
-    background:#005fd4;
+    background:#003f9e;
 }
 
 .benefits{
@@ -135,101 +136,102 @@ button:hover{
 </head>
 
     <body>
+        <main>
+        <div class="container">
 
-    <div class="container">
+            <div class="logo">
+                OrthoNow
+            </div>
 
-        <div class="logo">
-            OrthoNow
+            <div class="hero">
+
+                <h1>Get an Expert Orthopaedic Opinion</h1>
+
+                <p>Book your consultation at OrthoNow. Working professionals aged 28–50 in Bengaluru experiencing knee or back pain.</p>
+
+            </div>
+
+            <div class="trust">
+
+            <div>
+            ⭐ 4.9 Rating
+            </div>
+
+            <div>
+            9 Clinics
+            </div>
+
+            <div>
+            50,000+ Patients
+            </div>
+
+            </div>
+
+            <form id="consultationForm">
+
+            <input type="text" id="name" placeholder="Enter your Name" required>
+
+            <input type="tel" id="phone" placeholder="Enter your Phone Number"
+            required>
+
+            <button type="submit">Book Consultation</button>
+
+            </form>
+
+        <div class="benefits">
+
+        <h2>Why Choose OrthoNow?</h2>
+
+        <ul>
+
+        <li>Experienced Orthopaedic Specialists</li>
+
+        <li>Same-Day Consultation</li>
+
+        <li>9 Clinics Across Bengaluru</li>
+
+        <li>Trusted by Thousands of Patients</li>
+
+        </ul>
+
         </div>
 
-        <div class="hero">
+        <div id="thankYou">
 
-            <h1>Get an Expert Orthopaedic Opinion</h1>
+        <h2>Thank You!</h2>
 
-            <p>Book your consultation at OrthoNow. Working professionals aged 28–50 in Bengaluru experiencing knee or back pain.</p>
+        <p>Your enquiry has been received.</p>
 
-        </div>
+        <p>Our team will contact you shortly.</p>
 
-        <div class="trust">
-
-        <div>
-        ⭐ 4.9 Rating
-        </div>
-
-        <div>
-        9 Clinics
-        </div>
-
-        <div>
-        50,000+ Patients
         </div>
 
         </div>
 
-        <form id="consultationForm">
+    <script defer>
+    window.dataLayer = window.dataLayer || [];
 
-        <input type="text" id="name" placeholder="Enter your Name" required>
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("consultationForm");
 
-        <input type="tel" id="phone" placeholder="Enter your Phone Number"
-        required>
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-        <button type="submit">Book Consultation</button>
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
 
-        </form>
+            window.dataLayer.push({
+                event: "consultation_form_submitted",
+                patient_name: name,
+                patient_phone: phone
+            });
 
-    <div class="benefits">
-
-    <h2>Why Choose OrthoNow?</h2>
-
-    <ul>
-
-    <li>Experienced Orthopaedic Specialists</li>
-
-    <li>Same-Day Consultation</li>
-
-    <li>9 Clinics Across Bengaluru</li>
-
-    <li>Trusted by Thousands of Patients</li>
-
-    </ul>
-
-    </div>
-
-    <div id="thankYou">
-
-    <h2>Thank You!</h2>
-
-    <p>Your enquiry has been received.</p>
-
-    <p>Our team will contact you shortly.</p>
-
-    </div>
-
-    </div>
-
-<script defer>
-window.dataLayer = window.dataLayer || [];
-
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("consultationForm");
-
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const name = document.getElementById("name").value;
-        const phone = document.getElementById("phone").value;
-
-        window.dataLayer.push({
-            event: "consultation_form_submitted",
-            patient_name: name,
-            patient_phone: phone
+            form.style.display = "none";
+            document.getElementById("thankYou").style.display = "block";
         });
-
-        form.style.display = "none";
-        document.getElementById("thankYou").style.display = "block";
     });
-});
-</script>
+    </script>
+    </main>
 
-</body>
+    </body>
 </html>
