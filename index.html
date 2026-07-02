@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OrthoNow consultation for knee and back pain in Bengaluru.">
+    <title>OrthoNow</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, system-ui, sans-serif; }
+        body { background: #f5f7fb; color: #222; padding: 12px; }
+        .card { max-width: 440px; margin: 15px auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        h1 { font-size: 22px; margin-bottom: 6px; color: #111; text-align: center; line-height: 1.2; }
+        p { font-size: 14px; margin-bottom: 12px; color: #444; text-align: center; }
+        .trust { display: flex; gap: 6px; margin-bottom: 15px; font-size: 12px; font-weight: 600; text-align: center; }
+        .trust div { flex: 1; background: #dbeafe; padding: 8px 2px; border-radius: 4px; color: #0044bb; }
+        form { display: flex; flex-direction: column; gap: 8px; }
+        label { font-size: 12px; font-weight: 600; margin-bottom: -4px; }
+        input { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px; width: 100%; -webkit-appearance: none; }
+        button { padding: 12px; background: #0056d6; color: #fff; border: none; border-radius: 4px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 4px; }
+        #thankYou { display: none; text-align: center; padding: 15px; background: #e8fff0; border: 1px solid #bbf7d0; border-radius: 4px; margin-top: 12px; }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>Get an Expert Orthopaedic Opinion</h1>
+        <p>Book your consultation at OrthoNow. For professionals aged 28–50 in Bengaluru with knee or back pain.</p>
+        
+        <div class="trust">
+            <div>Rating: 4.9 Stars</div>
+            <div>Clinics: 9 Locations</div>
+            <div>Patients: 50K+ Trusted</div>
+        </div>
+
+        <form id="consultationForm" aria-label="Consultation Form">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required autocomplete="name">
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" inputmode="numeric" required autocomplete="tel">
+
+            <button type="submit">Book Consultation</button>
+        </form>
+
+        <div id="thankYou" role="status" aria-live="polite">
+            <h3>Thank You!</h3>
+            <p>Our medical team will contact you shortly.</p>
+        </div>
+    </main>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        document.getElementById("consultationForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const n = document.getElementById("name").value.trim();
+            const p = document.getElementById("phone").value.trim();
+            if(!n || !p) return;
+            
+            window.dataLayer.push({
+                event: "consultation_form_submitted",
+                patient_name: n,
+                patient_phone: p,
+                page_name: "consultation_landing_page"
+            });
+            this.style.display = "none";
+            document.getElementById("thankYou").style.display = "block";
+        });
+    </script>
+</body>
+</html>
